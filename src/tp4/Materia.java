@@ -15,6 +15,7 @@ public class Materia {
     this.nombre=nombre;
     this.anio=anio;}
 
+
     public int getIdMateria() {
       return idMateria;}
 
@@ -55,6 +56,11 @@ public class Materia {
         }
         final Materia other = (Materia) obj;
         return Objects.equals(this.nombre, other.nombre);
+    }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + '}';
     }
 
 }

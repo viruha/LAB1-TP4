@@ -46,4 +46,32 @@ public class Alumno {
     public int cantidadMaterias() {
         return listaMaterias.size();
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + this.legajo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Alumno other = (Alumno) obj;
+        return this.legajo == other.legajo;
+    }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "legajo=" + legajo + ", apellido=" + apellido + ", nombre=" + nombre + '}';
+    }
+    
 }

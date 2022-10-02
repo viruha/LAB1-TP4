@@ -2,6 +2,7 @@
 package view;
 
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import tp4.Alumno;
 
@@ -152,15 +153,29 @@ public class Fr_AlumnoAlta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Colegio.alumnos.add(new Alumno(Integer.parseInt(TF_LegajoAlumno.getText()),TF_ApellidoAlumno.getText(), TF_NombreAlumno.getText()));
-        
+    
+        int testigo=0;
         for (Alumno alumno : Colegio.alumnos) {
-            System.out.println(alumno.getNombre());
+            if (alumno.getLegajo()==(Integer.parseInt(TF_LegajoAlumno.getText()))) {
+                JOptionPane.showMessageDialog(null, "Coinciden con legajo ya ingresado");
+                testigo=testigo+1;
+            }
         }
+    
+        if (testigo!=0) {
+            JOptionPane.showMessageDialog(null, "No se puede ingresar alumno ya ingresado");
+        } else{
+            Colegio.alumnos.add(new Alumno(Integer.parseInt(TF_LegajoAlumno.getText()),TF_ApellidoAlumno.getText(), TF_NombreAlumno.getText()));
+        }
+        
+    
+    for (Alumno alumno : Colegio.alumnos) {
+    System.out.println(alumno.getNombre());    
     }//GEN-LAST:event_jButton1ActionPerformed
-
+ }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
- Component[] componentes = this.jPanel1.getComponents();
+    Component[] componentes = this.jPanel1.getComponents();
         for (int i = 0; i < componentes.length; i++) {
             if (componentes[i] instanceof JTextField) {
                 ((JTextField) componentes[i]).setText("");

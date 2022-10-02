@@ -2,6 +2,7 @@
 package view;
 
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import tp4.Alumno;
 import tp4.Materia;
@@ -140,8 +141,10 @@ public class Fr_Inscribir extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      Materia materiaSel = (Materia) CBox_Materia.getSelectedItem();
-     Alumno alumnoSel = (Alumno) CBox_Alumno.getSelectedItem();
+     Alumno alumnoSel = (Alumno) CBox_Alumno.getSelectedItem(); 
      alumnoSel.agregarMateria(materiaSel);
+     //Deberiamos hacer que la función agregarMateria retorne algún valor
+     //para saber si no esta ya inscripto en la materia, o lo pudo inscribir
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CBox_MateriaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_CBox_MateriaComponentShown

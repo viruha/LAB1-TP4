@@ -1,6 +1,7 @@
 package tp4;
 
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 public class Alumno {
 
@@ -40,7 +41,14 @@ public class Alumno {
     } 
 
     public void agregarMateria(Materia m) {
-        this.listaMaterias.add(m);
+        
+        for(Materia mate : listaMaterias)
+        if ((mate.getIdMateria()) == (m.getIdMateria())) {
+            JOptionPane.showMessageDialog(null, "El alumano ya está inscripto en la materia");
+        } else {
+            this.listaMaterias.add(m);
+        }
+           
     }
 
     public int cantidadMaterias() {

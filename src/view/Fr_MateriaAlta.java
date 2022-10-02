@@ -2,6 +2,7 @@
 package view;
 
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import tp4.Materia;
 
@@ -156,8 +157,22 @@ public class Fr_MateriaAlta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Colegio.materias.add(new Materia(Integer.parseInt(TF_CodigoMateria.getText()),TF_NombreMateria.getText(), Integer.parseInt(TF_AnioMateria.getText())));
         
+             
+    int testigo=0;
+    for (Materia materia : Colegio.materias) {
+        if (materia.getIdMateria()==(Integer.parseInt(TF_CodigoMateria.getText()))) {
+            JOptionPane.showMessageDialog(null,"Materia ya ingresada");
+            testigo = testigo + 1;
+        }
+    }
+
+        if (testigo!=0) {
+            JOptionPane.showMessageDialog(null, "No se puede ingresar materia ya ingresada");
+        } else {
+            Colegio.materias.add(new Materia(Integer.parseInt(TF_CodigoMateria.getText()),TF_NombreMateria.getText(), Integer.parseInt(TF_AnioMateria.getText())));
+        }
+            
         for (Materia materia : Colegio.materias) {
             System.out.println(materia.getNombre());
         }

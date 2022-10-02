@@ -23,6 +23,7 @@ public class Colegio extends javax.swing.JFrame {
         menuAgregarMateria = new javax.swing.JMenuItem();
         menu_AgregarAlumno = new javax.swing.JMenuItem();
         menu_InscribirEnMateria = new javax.swing.JMenuItem();
+        menu_ListadoAlumnosMateria = new javax.swing.JMenuItem();
         menu_Salir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,6 +60,14 @@ public class Colegio extends javax.swing.JFrame {
             }
         });
         menu.add(menu_InscribirEnMateria);
+
+        menu_ListadoAlumnosMateria.setText("Ver listado alumnos/materias");
+        menu_ListadoAlumnosMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_ListadoAlumnosMateriaActionPerformed(evt);
+            }
+        });
+        menu.add(menu_ListadoAlumnosMateria);
 
         menu_Salir.setMnemonic('x');
         menu_Salir.setText("Salir");
@@ -120,6 +129,13 @@ public class Colegio extends javax.swing.JFrame {
         desktopPane.moveToFront(fr_Inscribir);    
     }//GEN-LAST:event_menu_InscribirEnMateriaActionPerformed
 
+    private void menu_ListadoAlumnosMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ListadoAlumnosMateriaActionPerformed
+        Fr_ListadoAlumnosMaterias fr_ListadoAlumnosMaterias = new Fr_ListadoAlumnosMaterias();
+        fr_ListadoAlumnosMaterias.setVisible(true);
+        desktopPane.add(fr_ListadoAlumnosMaterias);
+        desktopPane.moveToFront(fr_ListadoAlumnosMaterias);
+    }//GEN-LAST:event_menu_ListadoAlumnosMateriaActionPerformed
+
     public static void main(String args[]) {
 
       try {
@@ -155,6 +171,7 @@ public class Colegio extends javax.swing.JFrame {
     javax.swing.JMenuBar menuBar;
     javax.swing.JMenuItem menu_AgregarAlumno;
     javax.swing.JMenuItem menu_InscribirEnMateria;
+    javax.swing.JMenuItem menu_ListadoAlumnosMateria;
     javax.swing.JMenuItem menu_Salir;
     // End of variables declaration//GEN-END:variables
 

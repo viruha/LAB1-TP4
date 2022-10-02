@@ -37,6 +37,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_InscribirEnMateriaActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menu_ListadoAlumnosMateria">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver listado alumnos/materias"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_ListadoAlumnosMateriaActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menu_Salir">
               <Properties>
                 <Property name="mnemonic" type="int" value="120"/>

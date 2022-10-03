@@ -1,4 +1,3 @@
-
 package view;
 
 import java.awt.Component;
@@ -8,14 +7,11 @@ import tp4.Materia;
 
 public class Fr_MateriaAlta extends javax.swing.JInternalFrame {
 
-
-  
-    
     public Fr_MateriaAlta() {
         initComponents();
     }
 
-      @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -46,6 +42,12 @@ public class Fr_MateriaAlta extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 153, 255));
         jLabel4.setText("NOMBRE DE LA MATERIA");
+
+        TF_CodigoMateria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TF_CodigoMateriaFocusLost(evt);
+            }
+        });
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -152,40 +154,47 @@ public class Fr_MateriaAlta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    this.dispose();
-     
+        this.dispose();
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-             
-    int testigo=0;
-    for (Materia materia : Colegio.materias) {
-        if (materia.getIdMateria()==(Integer.parseInt(TF_CodigoMateria.getText()))) {
-            JOptionPane.showMessageDialog(null,"Materia ya ingresada");
-            testigo = testigo + 1;
-        }
-    }
 
-        if (testigo!=0) {
-            JOptionPane.showMessageDialog(null, "No se puede ingresar materia ya ingresada");
+        int testigo = 0;
+        if (TF_NombreMateria.getText().length() > 0) {
+            for (Materia materia : Colegio.materias) {
+                if (materia.getIdMateria() == (Integer.parseInt(TF_CodigoMateria.getText()))) {
+                    JOptionPane.showMessageDialog(null, "Materia ya ingresada");
+                    testigo = testigo + 1;
+                }
+            }
+            if (testigo != 0) {
+                JOptionPane.showMessageDialog(null, "No se puede ingresar materia ya ingresada");
+            } else {
+                Colegio.materias.add(new Materia(Integer.parseInt(TF_CodigoMateria.getText()), TF_NombreMateria.getText(), Integer.parseInt(TF_AnioMateria.getText())));
+            }
         } else {
-            Colegio.materias.add(new Materia(Integer.parseInt(TF_CodigoMateria.getText()),TF_NombreMateria.getText(), Integer.parseInt(TF_AnioMateria.getText())));
+            JOptionPane.showMessageDialog(null, "La meteria debe tener un nombre");
         }
-            
-        for (Materia materia : Colegio.materias) {
-            System.out.println(materia.getNombre());
-        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
- Component[] componentes = this.jPanel1.getComponents();
+        Component[] componentes = this.jPanel1.getComponents();
         for (int i = 0; i < componentes.length; i++) {
             if (componentes[i] instanceof JTextField) {
                 ((JTextField) componentes[i]).setText("");
             }
-        }      
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void TF_CodigoMateriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TF_CodigoMateriaFocusLost
+        if (!TF_CodigoMateria.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un codigo para la materia");
+            TF_CodigoMateria.requestFocus();
+        }
+    }//GEN-LAST:event_TF_CodigoMateriaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

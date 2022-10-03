@@ -162,6 +162,9 @@
         <Component class="javax.swing.JTextField" name="TF_NombreAlumno">
         </Component>
         <Component class="javax.swing.JTextField" name="TF_LegajoAlumno">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="TF_LegajoAlumnoFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TF_ApellidoAlumno">
         </Component>

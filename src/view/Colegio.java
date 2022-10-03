@@ -130,7 +130,7 @@ public class Colegio extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_InscribirEnMateriaActionPerformed
 
     private void menu_ListadoAlumnosMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ListadoAlumnosMateriaActionPerformed
-        Fr_ListadoAlumnosMaterias fr_ListadoAlumnosMaterias = new Fr_ListadoAlumnosMaterias();
+        Fr_BusquedaMateriaAlumno fr_ListadoAlumnosMaterias = new Fr_BusquedaMateriaAlumno();
         fr_ListadoAlumnosMaterias.setVisible(true);
         desktopPane.add(fr_ListadoAlumnosMaterias);
         desktopPane.moveToFront(fr_ListadoAlumnosMaterias);

@@ -1,25 +1,20 @@
-
 package view;
 
-import java.awt.Component;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 import tp4.Alumno;
 import tp4.Materia;
 
 public class Fr_Inscribir extends javax.swing.JInternalFrame {
 
-
-  
-    
     public Fr_Inscribir() {
         initComponents();
-        
+
         llenarCombo();
 
     }
 
-      @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -135,21 +130,37 @@ public class Fr_Inscribir extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    this.dispose();
-     
+        this.dispose();
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     Materia materiaSel = (Materia) CBox_Materia.getSelectedItem();
-     Alumno alumnoSel = (Alumno) CBox_Alumno.getSelectedItem(); 
-     alumnoSel.agregarMateria(materiaSel);
-     //Deberiamos hacer que la función agregarMateria retorne algún valor
-     //para saber si no esta ya inscripto en la materia, o lo pudo inscribir
+        Boolean existe = false;
+        Materia materiaSel = (Materia) CBox_Materia.getSelectedItem();
+        Alumno alumnoSel = (Alumno) CBox_Alumno.getSelectedItem();
+        if ((materiaSel == null) || (alumnoSel == null)) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno y una materia");
+        } else {
+            
+                if (alumnoSel.getListaMaterias().contains(materiaSel)) {
+                    existe = true;
+                }
+
+            
+            if (!existe) {
+                alumnoSel.agregarMateria(materiaSel);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya esta inscripto en esa materia");
+            }
+        }
+
+        //Deberiamos hacer que la función agregarMateria retorne algún valor
+        //para saber si no esta ya inscripto en la materia, o lo pudo inscribir
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CBox_MateriaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_CBox_MateriaComponentShown
 
-       
+
     }//GEN-LAST:event_CBox_MateriaComponentShown
 
 
@@ -165,12 +176,12 @@ public class Fr_Inscribir extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void llenarCombo() {
-          CBox_Materia.removeAllItems();
-       for (Materia materia : Colegio.materias) {
+        CBox_Materia.removeAllItems();
+        for (Materia materia : Colegio.materias) {
             CBox_Materia.addItem(materia);
         }
-       CBox_Alumno.removeAllItems();
-              for (Alumno alumno : Colegio.alumnos) {
+        CBox_Alumno.removeAllItems();
+        for (Alumno alumno : Colegio.alumnos) {
             CBox_Alumno.addItem(alumno);
         }
     }

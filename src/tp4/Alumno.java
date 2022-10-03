@@ -16,6 +16,10 @@ public class Alumno {
         this.nombre=nombre;
         this.listaMaterias=new HashSet();}
 
+    public HashSet<Materia> getListaMaterias() {
+        return listaMaterias;
+    }
+
     public int getLegajo() {
         return legajo;
     }
@@ -41,14 +45,8 @@ public class Alumno {
     } 
 
     public void agregarMateria(Materia m) {
-        
-        for(Materia mate : listaMaterias)
-        if ((mate.getIdMateria()) == (m.getIdMateria())) {
-            JOptionPane.showMessageDialog(null, "El alumano ya está inscripto en la materia");
-        } else {
             this.listaMaterias.add(m);
-        }
-           
+                  
     }
 
     public int cantidadMaterias() {
@@ -79,7 +77,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "legajo=" + legajo + ", apellido=" + apellido + ", nombre=" + nombre + '}';
+        return "legajo=" + legajo + ", apellido=" + apellido + ", nombre=" + nombre;
     }
     
 }

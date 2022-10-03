@@ -1,4 +1,3 @@
-
 package view;
 
 import java.awt.Component;
@@ -8,14 +7,11 @@ import tp4.Alumno;
 
 public class Fr_AlumnoAlta extends javax.swing.JInternalFrame {
 
-
-  
-    
     public Fr_AlumnoAlta() {
         initComponents();
     }
 
-      @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -46,6 +42,12 @@ public class Fr_AlumnoAlta extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 153, 255));
         jLabel4.setText("APELLIDO");
+
+        TF_LegajoAlumno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TF_LegajoAlumnoFocusLost(evt);
+            }
+        });
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -148,40 +150,56 @@ public class Fr_AlumnoAlta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    this.dispose();
-     
+        this.dispose();
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-        int testigo=0;
-        for (Alumno alumno : Colegio.alumnos) {
-            if (alumno.getLegajo()==(Integer.parseInt(TF_LegajoAlumno.getText()))) {
-                JOptionPane.showMessageDialog(null, "Coinciden con legajo ya ingresado");
-                testigo=testigo+1;
+
+        int testigo = 0;
+            if (TF_NombreAlumno.getText().length() > 0) {
+                if (TF_ApellidoAlumno.getText().length() > 0) {
+                    for (Alumno alumno : Colegio.alumnos) {
+                        if (alumno.getLegajo() == (Integer.parseInt(TF_LegajoAlumno.getText()))) {
+                            JOptionPane.showMessageDialog(null, "Coinciden con legajo ya ingresado");
+                            testigo = testigo + 1;
+                        }
+                    }
+
+                    if (testigo != 0) {
+                        JOptionPane.showMessageDialog(null, "No se puede ingresar alumno ya ingresado");
+                    } else {
+                        Colegio.alumnos.add(new Alumno(Integer.parseInt(TF_LegajoAlumno.getText()), TF_ApellidoAlumno.getText(), TF_NombreAlumno.getText()));
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No puede dejar en blanco el apellido del alumno");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No puede dejar en blanco el nombre del alumno");
             }
-        }
-    
-        if (testigo!=0) {
-            JOptionPane.showMessageDialog(null, "No se puede ingresar alumno ya ingresado");
-        } else{
-            Colegio.alumnos.add(new Alumno(Integer.parseInt(TF_LegajoAlumno.getText()),TF_ApellidoAlumno.getText(), TF_NombreAlumno.getText()));
-        }
+
         
-    
-    for (Alumno alumno : Colegio.alumnos) {
-    System.out.println(alumno.getNombre());    
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
- }
-    
+
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Component[] componentes = this.jPanel1.getComponents();
+        Component[] componentes = this.jPanel1.getComponents();
         for (int i = 0; i < componentes.length; i++) {
             if (componentes[i] instanceof JTextField) {
                 ((JTextField) componentes[i]).setText("");
             }
-        }      
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void TF_LegajoAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TF_LegajoAlumnoFocusLost
+        if (!TF_LegajoAlumno.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero para el legajo");
+            TF_LegajoAlumno.requestFocus();
+        }
+    }//GEN-LAST:event_TF_LegajoAlumnoFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
